@@ -4,12 +4,12 @@
        xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
   <gazebo>
-	<plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_controller_manager.so">
+	<plugin name="gazebo_ros_controller_manager" filename="libgazebo_ros_control.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1000.0</updateRate>
     </plugin>
 
-    <plugin name="gazebo_ros_power_monitor_controller" filename="libgazebo_ros_power_monitor.so">
+<!--    <plugin name="gazebo_ros_power_monitor_controller" filename="libgazebo_ros_power_monitor.so">
       <alwaysOn>true</alwaysOn>
       <updateRate>1.0</updateRate>
       <timeout>5</timeout>
@@ -20,7 +20,7 @@
       <chargeRate>525</chargeRate>
       <dischargeVoltage>15.52</dischargeVoltage>
       <chargeVoltage>16.41</chargeVoltage>
-    </plugin>
+    </plugin>-->
   </gazebo>
 
 </robot>

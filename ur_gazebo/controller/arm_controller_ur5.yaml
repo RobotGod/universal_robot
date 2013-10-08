@@ -1,5 +1,5 @@
 arm_controller:
-  type: robot_mechanism_controllers/JointTrajectoryActionController
+  type: effort_controllers/JointTrajectoryActionController
   joints:
     - shoulder_pan_joint
     - shoulder_lift_joint
