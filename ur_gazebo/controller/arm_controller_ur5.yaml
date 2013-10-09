@@ -1,5 +1,5 @@
 arm_controller:
-  type: effort_controllers/JointTrajectoryActionController
+  type: effort_controllers/JointTrajectoryController
   joints:
     - shoulder_pan_joint
     - shoulder_lift_joint
