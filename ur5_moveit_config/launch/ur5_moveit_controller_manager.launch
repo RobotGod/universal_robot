@@ -1,8 +1,11 @@
 <launch>
   <arg name="moveit_controller_manager"
        default="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
+  <arg name="gazebo_sim" default="false" />
   <param name="moveit_controller_manager"
          value="$(arg moveit_controller_manager)"/>
 
-  <rosparam file="$(find ur5_moveit_config)/config/controllers.yaml"/>
+  <!-- if using gazebo for simulation, load relative controller -->
+  <rosparam unless="$(arg gazebo_sim)" file="$(find ur5_moveit_config)/config/controllers.yaml"/>
+  <rosparam if="$(arg gazebo_sim)" file="$(find ur5_moveit_config)/config/controllers_gazebo.yaml"/>
 </launch>

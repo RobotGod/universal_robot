@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- startup simulated world -->
+  <include file="$(find ur_gazebo)/launch/ur5.launch" />
+  
+  <include file="$(find ur5_moveit_config)/launch/move_group.launch">
+    <arg name="allow_trajectory_execution" value="true"/>
+	<arg name="gazebo_sim" value="true" />
+  </include>
+
+</launch>
