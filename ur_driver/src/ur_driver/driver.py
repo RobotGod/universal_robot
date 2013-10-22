@@ -8,7 +8,7 @@ import struct
 import traceback, code
 import optparse
 import SocketServer
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 import rospy
 import actionlib
@@ -381,7 +381,7 @@ def interp_cubic(p0, p1, t_abs):
         q[i] = a + b*t + c*t**2 + d*t**3
         qdot[i] = b + 2*c*t + 3*d*t**2
         qddot[i] = 2*c + 6*d*t
-    return JointTrajectoryPoint(q, qdot, qddot, rospy.Duration(t_abs))
+    return JointTrajectoryPoint(q, qdot, qddot, [], rospy.Duration(t_abs))
 
 # Returns (q, qdot, qddot) for sampling the JointTrajectory at time t.
 # The time t is the time since the trajectory was started.
@@ -436,7 +436,7 @@ class UR5TrajectoryFollower(object):
         self.following_lock = threading.Lock()
         self.T0 = time.time()
         self.robot = robot
-        self.server = actionlib.ActionServer("follow_joint_trajectory",
+        self.server = actionlib.ActionServer("joint_trajectory_action",
                                              FollowJointTrajectoryAction,
                                              self.on_goal, self.on_cancel, auto_start=False)
 
