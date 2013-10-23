@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<!-- loads a description file with reduced joint limits, in order to avoid funny planning -->
+<launch>
+  <param name="robot_description" textfile="$(find ur_description)/urdf/ur5_joint_limited_robot.urdf" />
+</launch>

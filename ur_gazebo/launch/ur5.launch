@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <launch>
+	
+  <!-- if true, a description of the robot with limited joint range will be used for better planning -->
+  <arg name="joint_limited" default="false" />
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch" />
 
   <!-- send frida urdf to param server -->
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find ur_description)/urdf/ur5_robot.urdf.xacro'" />
+  <include file="$(find ur_description)/launch/ur5_upload.launch" unless="$(arg joint_limited)" />
+  <include file="$(find ur_description)/launch/ur5_joint_limited_upload.launch" if="$(arg joint_limited)" />
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -z 0.1" respawn="false" output="screen" />
