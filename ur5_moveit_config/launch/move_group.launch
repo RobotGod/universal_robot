@@ -31,7 +31,7 @@
     <arg name="moveit_controller_manager" value="ur5" unless="$(arg fake_execution)"/>
     <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
 	<!-- if using Gazebo, load controller file -->
-	<arg name="gazebo_sim" value="$(arg gazebo_sim)" />
+	<arg name="gazebo_sim" value="$(arg gazebo_sim)" unless="$(arg fake_execution)" />
   </include>
 
   <!-- Sensors Functionality -->
